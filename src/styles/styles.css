@@ -1,0 +1,284 @@
+/* ============================================================
+   SAUHALLA — estructura y estética replicadas, contenido propio
+   Tokens extraídos del sitio de producción (ver Engram:
+   sdd/clon-estetico-sauhalla/explore)
+   ============================================================ */
+:root{
+  /* paleta */
+  --bg:#0e0e0e;
+  --bg-alt:#1e1e1e;
+  --surface:#212121;
+  --line:#333333;
+  --text:#ffffff;
+  --muted:#cccccc;
+  --muted-2:rgba(255,255,255,.5);
+  --accent:#be9169;
+  --accent-hover:#cfa47e;
+  --accent-soft:rgba(190,145,105,.4);
+  --on-accent:#0e0e0e;
+  --overlay:rgba(0,0,0,.55);
+  --header-bg:rgba(14,14,14,.72);
+
+  /* placeholders de imagen */
+  --media-base-1:#262626;
+  --media-base-2:#141414;
+  --media-warm:rgba(190,145,105,.22);
+  --media-warm-strong:rgba(190,145,105,.3);
+  --media-cool:rgba(255,255,255,.07);
+
+  /* tipografía */
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --fs-1:40px;
+  --fs-2:32px;
+  --fs-3:24px;
+  --fs-4:21px;
+  --fs-5:18px;
+  --fs-6:16px;
+  --fs-7:12px;
+  --ls-tight:-.03em;
+  --ls-body:-.02em;
+
+  /* forma y medida */
+  --r-sm:20px;
+  --r-md:24px;
+  --r-lg:40px;
+  --maxw:1200px;
+  --maxw-inner:1120px;
+  --pad:24px;
+  --section-y:120px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-size:var(--fs-6);line-height:1.6;
+  letter-spacing:var(--ls-body);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin:0 0 1rem}
+
+h1,h2,h3,h4,h6{margin:0 0 .6em;font-weight:500;line-height:1.15;letter-spacing:var(--ls-tight)}
+h1{font-size:var(--fs-1)}
+h2{font-size:var(--fs-2)}
+h3{font-size:var(--fs-4)}
+h4{font-size:var(--fs-5);font-weight:400;margin:0;letter-spacing:var(--ls-body)}
+h6{font-size:var(--fs-5);font-weight:400;color:var(--muted);letter-spacing:var(--ls-body)}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.center{text-align:center}
+.muted{color:var(--muted)}
+.eyebrow{
+  font-size:var(--fs-7);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 1rem;
+}
+.lead{font-size:var(--fs-4);color:var(--muted);max-width:52ch;line-height:1.5}
+
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:16px;top:16px;background:var(--accent);color:var(--on-accent);padding:10px 16px;z-index:99;border-radius:var(--r-lg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-block;padding:14px 30px;border-radius:var(--r-lg);
+  font-size:var(--fs-6);letter-spacing:var(--ls-body);
+  border:1px solid transparent;transition:.2s ease;cursor:pointer;
+}
+.btn-primary{background:var(--accent);color:var(--on-accent);font-weight:500}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-outline{border-color:var(--line);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-ghost{color:var(--muted);padding-inline:0;border-bottom:1px solid var(--line);border-radius:0}
+.btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+.btn-lg{padding:17px 42px}
+.btn-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--header-bg);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px}
+.brand{font-size:var(--fs-5);letter-spacing:.2em;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:32px}
+.nav-list{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.nav-list a{font-size:var(--fs-6);letter-spacing:var(--ls-body);color:var(--muted)}
+.nav-list a:hover{color:var(--text)}
+.nav-cta{padding:11px 24px}
+.nav-toggle{
+  display:none;flex-direction:column;gap:5px;background:none;border:0;padding:8px;
+}
+.nav-toggle span{width:24px;height:1.5px;background:var(--text);transition:.25s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ---------- placeholders de imagen ---------- */
+.media{
+  background:linear-gradient(135deg,var(--media-base-1),var(--media-base-2));
+  border:1px solid var(--line);border-radius:var(--r-md);
+  position:relative;overflow:hidden;
+}
+.media::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 25%,var(--media-warm),transparent 60%);
+}
+.media-2::after,.media-g2::after{background:radial-gradient(circle at 65% 35%,var(--media-cool),transparent 60%)}
+.media-3::after{background:radial-gradient(circle at 50% 70%,var(--media-warm-strong),transparent 65%)}
+.media-4::after{background:radial-gradient(circle at 20% 80%,var(--media-cool),transparent 60%)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding-block:120px 90px}
+.media-hero{position:absolute;inset:0;border:0;border-radius:0}
+.hero-overlay{position:absolute;inset:0;background:var(--overlay)}
+.hero-content{position:relative;z-index:2}
+.hero-content h1{max-width:16ch}
+.hero-content .lead{margin-bottom:2rem}
+
+/* ---------- secciones ---------- */
+.section{padding-block:var(--section-y);border-top:1px solid var(--line)}
+.section-head{max-width:60ch;margin-bottom:56px}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-sub{margin:0}
+.section-lead{color:var(--muted)}
+
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:var(--maxw-inner);margin-inline:auto}
+.split-reverse .split-grid>.split-text{order:2}
+.split-reverse .split-grid>.split-media{order:1}
+.split-media{aspect-ratio:4/5;min-height:340px}
+.split-text h2{max-width:18ch}
+.split-text a:not(.btn){color:var(--accent);border-bottom:1px solid var(--accent-soft)}
+.facts{list-style:none;margin:0 0 2rem;padding:0;color:var(--muted)}
+.facts li{padding:10px 0;border-bottom:1px solid var(--line)}
+.facts strong{color:var(--text);font-weight:500}
+
+/* ---------- precios ---------- */
+.pricing{background:var(--bg-alt)}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.price-card{
+  position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:34px 26px;display:flex;flex-direction:column;
+}
+.price-card.featured{border-color:var(--accent)}
+.badge{
+  position:absolute;top:-11px;left:26px;background:var(--accent);color:var(--on-accent);
+  font-size:var(--fs-7);letter-spacing:var(--ls-body);padding:5px 14px;border-radius:var(--r-lg);
+}
+.price{font-size:var(--fs-1);margin:.2em 0 .1em;letter-spacing:var(--ls-tight)}
+.price-note{color:var(--muted);font-size:var(--fs-6);margin-bottom:26px}
+.price-card .btn{margin-top:auto;text-align:center}
+
+/* ---------- beneficios ---------- */
+.benefit-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.benefit{background:var(--bg);padding:34px 28px;display:flex;flex-direction:column;gap:18px;min-height:190px}
+.benefit .num{font-size:var(--fs-3);color:var(--accent);letter-spacing:var(--ls-tight)}
+.disclaimer{margin-top:24px;font-size:var(--fs-7);color:var(--muted-2)}
+
+/* ---------- galería ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery-grid .media{aspect-ratio:3/4}
+.gallery-grid .media:nth-child(odd){transform:translateY(18px)}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:26px}
+.marquee-track{display:flex;width:max-content;animation:slide 26s linear infinite}
+.marquee-track h2{margin:0;font-size:var(--fs-2);letter-spacing:.16em;color:var(--muted);white-space:nowrap}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .marquee-track{animation:none}
+  *{transition:none!important}
+}
+
+/* ---------- CTA final ---------- */
+.cta-final .lead{margin-inline:auto;margin-bottom:2rem}
+
+/* ---------- footer ---------- */
+.site-footer{border-top:1px solid var(--line);background:var(--bg-alt);padding-block:70px 30px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-brand{font-size:var(--fs-5);margin-bottom:.5rem}
+.footer-col h3{font-size:var(--fs-7);letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-bottom:1rem}
+.footer-col address{font-style:normal;color:var(--muted);line-height:1.8}
+.link-list{list-style:none;margin:0;padding:0;color:var(--muted)}
+.link-list li{margin-bottom:.5rem}
+.link-list a:hover,.footer-col address a:hover{color:var(--accent)}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:var(--fs-7);
+  color:var(--muted-2);
+}
+.to-top{color:var(--muted)}
+.to-top:hover{color:var(--text)}
+
+/* ---------- venta de saunas ---------- */
+.sales{background:var(--bg-alt)}
+.sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:20px}
+.sales-card{
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+}
+.sales-card.featured{border-color:var(--accent)}
+.media-sauna{aspect-ratio:4/3;border:0;border-radius:0;border-bottom:1px solid var(--line)}
+.sales-card.featured .media-sauna::after{background:radial-gradient(circle at 45% 40%,var(--media-warm-strong),transparent 62%)}
+.sales-body{display:flex;flex-direction:column;flex:1;padding:26px}
+.price-old{
+  margin-left:12px;font-size:var(--fs-5);color:var(--muted-2);
+  text-decoration:line-through;letter-spacing:var(--ls-body);
+}
+.specs{margin:0 0 26px;display:grid;gap:1px;background:var(--line);border-block:1px solid var(--line)}
+.specs>div{display:flex;justify-content:space-between;gap:16px;background:var(--surface);padding:10px 0}
+.specs dt{color:var(--muted);font-size:var(--fs-6)}
+.specs dd{margin:0;font-size:var(--fs-6)}
+.sales-body .btn{margin-top:auto;text-align:center}
+
+.sales-detail{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;
+  margin-top:64px;padding-top:56px;border-top:1px solid var(--line);
+}
+.sales-detail h3{margin-bottom:1.2rem}
+.tub-list{list-style:none;margin:0 0 28px;padding:0}
+.tub-list li{
+  display:flex;align-items:baseline;gap:16px;
+  padding:14px 0;border-bottom:1px solid var(--line);
+}
+.tub-name{font-weight:500;min-width:70px}
+.tub-spec{color:var(--muted);font-size:var(--fs-6);flex:1}
+.tub-price{font-size:var(--fs-3);letter-spacing:var(--ls-tight)}
+
+/* ============================================================
+   Responsive
+   1024px — solo grids de 3-4 columnas (desviación documentada
+   respecto al original, que colapsa todo en 768)
+   768px  — breakpoint del original: layout completo
+   ============================================================ */
+@media (max-width:1024px){
+  .price-grid{grid-template-columns:repeat(2,1fr)}
+  .sales-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:768px){
+  :root{--section-y:72px;--fs-1:32px;--fs-2:24px;--fs-4:18px}
+
+  .nav-toggle{display:flex}
+  .nav{
+    position:fixed;inset:72px 0 auto 0;flex-direction:column;align-items:flex-start;gap:20px;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:28px var(--pad) 36px;
+    transform:translateY(-120%);transition:transform .3s ease;
+  }
+  .nav.open{transform:translateY(0)}
+  .nav-list{flex-direction:column;gap:16px}
+  .nav-list a{font-size:var(--fs-5)}
+
+  .split-grid{grid-template-columns:1fr;gap:32px}
+  .split-reverse .split-grid>.split-text,
+  .split-reverse .split-grid>.split-media{order:initial}
+  .split-media{aspect-ratio:4/3;min-height:260px}
+
+  .price-grid,.gallery-grid,.footer-grid{grid-template-columns:1fr}
+  .sales-grid{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+  .sales-detail{grid-template-columns:1fr;gap:40px}
+  .gallery-grid .media:nth-child(odd){transform:none}
+}
