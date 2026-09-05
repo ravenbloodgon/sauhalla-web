@@ -39,11 +39,31 @@ src/
     Footer.jsx
 ```
 
+## Design tokens
+
+Todo el diseño vive en `:root` dentro de `src/styles/styles.css`. Los valores replican
+los del sitio de producción, extraídos de su HTML.
+
+| Grupo | Tokens |
+|---|---|
+| Paleta | `--bg` `#0e0e0e`, `--bg-alt` `#1e1e1e`, `--surface` `#212121`, `--line` `#333` |
+| Texto | `--text` `#fff`, `--muted` `#ccc`, `--muted-2` `rgba(255,255,255,.5)` |
+| Acento | `--accent` `#be9169`, `--accent-hover`, `--accent-soft`, `--on-accent` |
+| Tipografía | Inter (400/500). Escala fija `--fs-1`…`--fs-7` = 40/32/24/21/18/16/12px |
+| Tracking | `--ls-tight` `-.03em` (títulos), `--ls-body` `-.02em` (cuerpo) |
+| Forma | `--r-sm` 20px, `--r-md` 24px, `--r-lg` 40px (botones tipo pastilla) |
+| Medida | `--maxw` 1200px, `--maxw-inner` 1120px, `--section-y` 120px |
+
+Regla: ningún color literal fuera de `:root`. Si necesitas uno nuevo, añade un token.
+
+Breakpoints: `1024px` (solo grids de 3–4 columnas) y `768px` (layout completo).
+El original usa solo 768; el de 1024 se añadió porque las tarjetas de precios quedaban
+ilegibles en tablet.
+
 ## Notas
 
 - Los bloques `.media` son placeholders con gradientes CSS. Para usar fotos reales:
   poner los archivos en `src/assets/` (o `public/`) e importarlos en cada componente.
 - Enlaces externos (reservas cal.com, pagos Stripe, ventas, redes) centralizados en
   `src/data/site.js` — cambiar allí, no en los componentes.
-- Paleta y tipografía en las variables `:root` de `src/styles/styles.css`.
 - Fuentes vía Google Fonts, cargadas desde `index.html`.
